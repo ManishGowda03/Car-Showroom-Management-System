@@ -1,0 +1,49 @@
+class Car:
+    def __init__(self, make, model, year, price):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.price = price
+
+    def __str__(self):
+        return f"{self.year} {self.make} {self.model} - ${self.price}"
+
+class Showroom:
+    def __init__(self):
+        self.cars = []
+
+    def add_car(self, car):
+        self.cars.append(car)
+        print(f"Car added: {car}")
+
+    def remove_car(self, car):
+        if car in self.cars:
+            self.cars.remove(car)
+            print(f"Car removed: {car}")
+        else:
+            print(f"Car not found: {car}")
+
+    def display_cars(self):
+        if not self.cars:
+            print("No cars in the showroom.")
+        else:
+            print("Cars in the showroom:")
+            for car in self.cars:
+                print(car)
+
+# Example usage
+if __name__ == "__main__":
+    showroom = Showroom()
+
+    car1 = Car("Toyota", "Corolla", 2022, 20000)
+    car2 = Car("Honda", "Civic", 2021, 22000)
+    car3 = Car("Ford", "Mustang", 2020, 35000)
+
+    showroom.add_car(car1)
+    showroom.add_car(car2)
+    showroom.add_car(car3)
+
+    showroom.display_cars()
+
+    showroom.remove_car(car2)
+    showroom.display_cars()
